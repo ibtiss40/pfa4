@@ -1,0 +1,160 @@
+﻿{% include 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<title>:: Swift - Hospital Admin ::</title>
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link href="doctor-back/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<link
+		href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+		<!-- Dropzone Css -->
+		<link
+		href="doctor-back/plugins/dropzone/dropzone.css" rel="stylesheet">
+		<!-- Bootstrap Material Datetime Picker Css -->
+		<link
+		href="doctor-back/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet"/>
+		<!-- Wait Me Css -->
+		<link
+		href="doctor-back/plugins/waitme/waitMe.css" rel="stylesheet"/>
+		<!-- Bootstrap Select Css -->
+		<link href="doctor-back/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet"/>
+
+		<link href="doctor-back/css/main.css" rel="stylesheet">
+		<!-- Custom Css -->
+
+		<!-- Swift Themes. You can choose a theme from css/themes instead of get all themes -->
+	<link href="doctor-back/css/themes/all-themes.css" rel="stylesheet"/> </head>
+
+
+	<!-- #Top Bar -->
+
+
+	<section class="content">
+		<form method="Post" action="{{path('addP')}}" enctype="multipart/form-data">
+			<div class="container-fluid">
+				<div class="block-header">
+					<h2>Ajouter Patient</h2>
+				</div>
+				<div class="row clearfix">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="card">
+							<div class="body">
+								<div class="row clearfix">
+									<div class="col-lg-4 col-sm-12">
+										<div class="form-group">
+											<div class="form-line">
+												<input type="text" class="form-control" name="nom" placeholder="Nom">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-sm-12">
+										<div class="form-group">
+											<div class="form-line">
+												<input type="text" class="form-control" name="prenom" placeholder="prenom">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-sm-12">
+										<div class="form-group">
+											<div class="form-line">
+												<input type="text" class="form-control" name="telephone" placeholder="Telephone">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-lg-4 col-sm-12">
+										<div class="form-group">
+											<div class="form-line">
+												<input type="text" class="form-control" name="age" placeholder="age">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-sm-12">
+										<div class="form-group drop-custum">
+											<select name="genre" class="form-control show-tick">
+												<option value="">-- Gender --</option>
+												<option value="Homme">Homme</option>
+												<option value="Femme">Femme</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-4 col-sm-12">
+										<div class="form-group">
+											<div class="form-line">
+												<input type="text" class="form-control" name="email" placeholder=" Email">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-lg-4 col-sm-12">
+										<div class="form-group">
+											<div class="form-line">
+												<input type="text" class="form-control" name="cin" placeholder="CIN">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-sm-12">
+										<div class="form-group">
+											<div class="form-line">
+												<input type="text" class="form-control" name="profession" placeholder="Profession">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-sm-12">
+										<div class="form-group drop-custum">
+											<select name="couvsociale" class="form-control show-tick">
+												<option value="">-- couverture sociale --</option>
+												<option value="CNOPS">CNOPS</option>
+												<option value="CNSS">CNSS</option>
+												<option value="Assurance">Assurance</option>
+												<option value="RAMED">RAMED</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-4 col-sm-12">
+										<div class="form-group">
+											<div class="form-line">
+												<input type="text" class="form-control" name="ville" placeholder="ville">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-4 col-sm-12">
+										<div class="form-group">
+											<div class="form-line">
+												<input type="text" class="form-control" name="password" placeholder="pass">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="row clearfix">
+									<div class="col-lg-12 col-md-12 col-sm-12"></div>
+									<div class="fallback">
+										<input type="file" name="image" id="your_picture" onchange="readURL(this);" multiple/>
+										<label for="your_picture">
+											<figure>
+												<img src="" alt="" class="your_picture_image">
+											</figure>
+											<span class="file-button">choose picture</span>
+										</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row clearfix">
+							<div class="col-xs-12">
+								<button type="submit" class="btn btn-raised g-bg-cyan">Ajouter</button>
+								<button type="submit" class="btn btn-raised">Annuler</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</html></form></html></section><div class="color-bg"></div><!-- Jquery Core Js --><script src="doctor-back/bundles/libscripts.bundle.js"></script><!-- Lib Scripts Plugin Js --><script src="doctor-back/bundles/morphingsearchscripts.bundle.js"></script><!-- morphing search Js --><script src="doctor-back/bundles/vendorscripts.bundle.js"></script><!-- Lib Scripts Plugin Js --><script src="doctor-back/plugins/autosize/autosize.js"></script><!-- Autosize Plugin Js --><script src="doctor-back/plugins/momentjs/moment.js"></script><!-- Moment Plugin Js --><script src="doctor-back/plugins/dropzone/dropzone.js"></script><!-- Dropzone Plugin Js --><!-- Bootstrap Material Datetime Picker Plugin Js --><script src="doctor-back/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script><script src="doctor-back/bundles/mainscripts.bundle.js"></script><!-- Custom Js --><script src="doctor-back/bundles/morphingscripts.bundle.js"></script><!-- morphing search page js --><script src="doctor-back/js/pages/forms/basic-form-elements.js"></script><script src="doctor-back/js/admin.js"></script></html></body></html>

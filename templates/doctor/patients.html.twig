@@ -1,0 +1,83 @@
+﻿{% include 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<title>:: Swift - Hospital Admin ::</title>
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link href="doctor-back/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+		<link href="doctor-back/css/main.css" rel="stylesheet">
+		<!-- Custom Css -->
+
+		<!-- Swift Themes. You can choose a theme from css/themes instead of get all themes -->
+	<link href="doctor-back/css/themes/all-themes.css" rel="stylesheet"/> </head>
+
+
+	<section class="content patients">
+		<div class="container-fluid">
+			<div class="block-header">
+				<h2>Liste Patients</h2>
+			</div>
+			<div class="row clearfix">
+				{% set count = 0 %}
+				{% for user in user %}
+
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="card all-patients">
+							<div class="body">
+								<div class="row">
+									<div class="col-md-4 col-sm-4 text-center m-b-0">
+										<a href="#" class="p-profile-pix">
+											<img src=" {{user.image}}" alt="user" class="img-thumbnail img-fluid"></a>
+									</div>
+									<div class="col-md-8 col-sm-8 m-b-0">
+										<h5 class="m-b-0">{{user.nom}}
+											{{user.prenom}}
+											<a href="#" class="edit">
+												<i class="zmdi zmdi-edit"></i>
+											</a><br>
+											<a href="{{path('deleteP', {'id':user.id})}}" class="edit">
+												<i class="zmdi zmdi-delete"></i>
+											</a>
+										</h5>
+										<small>{{user.cin}}</small>
+										<address class="m-b-0">
+											{{user.ville}}<br>
+											<abbr title="Phone">P:</abbr>
+											{{user.telephone}}
+										</address>
+									</div>
+									<div class="quick-stats">
+										<a href="{{path('profile',{'id':user.id})}}" class="btn btn-raised btn-sm">View Profile</a>
+									</div>
+									<div class="quick-stats">
+										<a href="{{user.image}}" data={{user.image}} type="application/pdf" class="btn btn-raised btn-sm">View pdf</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{% set count = count + 1 %}
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	<div class="color-bg"></div>
+	<!-- Jquery Core Js -->
+	<script src="doctor-back/bundles/libscripts.bundle.js"></script>
+	<!-- Lib Scripts Plugin Js -->
+	<script src="doctor-back/bundles/morphingsearchscripts.bundle.js"></script>
+	<!-- morphing search Js -->
+	<script src="doctor-back/bundles/vendorscripts.bundle.js"></script>
+	<!-- Lib Scripts Plugin Js -->
+
+	<script src="doctor-back/bundles/mainscripts.bundle.js"></script>
+	<!-- Custom Js -->
+	<script src="doctor-back/bundles/morphingscripts.bundle.js"></script>
+	<!-- morphing search page js -->
+</html></body></html>
