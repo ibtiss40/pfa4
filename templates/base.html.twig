@@ -5,16 +5,20 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 		<title>:: Swift - Hospital Admin ::</title>
+		{% block stylesheets %}
+
+			<link href="doctor-back/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+			<link
+			href="doctor-back/plugins/morrisjs/morris.css" rel="stylesheet"/>
+			<!-- Custom Css -->
+			<link
+			href="doctor-back/css/main.css" rel="stylesheet">
+			<!-- Swift Themes. You can choose a theme from css/themes instead of get all themes -->
+			<link href="doctor-back/css/themes/all-themes.css" rel="stylesheet"/>
+		{% endblock %}
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		<link href="doctor-back/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-		<link
-		href="doctor-back/plugins/morrisjs/morris.css" rel="stylesheet"/>
-		<!-- Custom Css -->
-		<link
-		href="doctor-back/css/main.css" rel="stylesheet">
-		<!-- Swift Themes. You can choose a theme from css/themes instead of get all themes -->
-		<link href="doctor-back/css/themes/all-themes.css" rel="stylesheet"/>
 	</head>
 	<body
 		class="theme-cyan">
@@ -483,7 +487,7 @@
 							<a href="javascript:void(0);" class="menu-toggle">
 								<i class="zmdi zmdi-copy"></i>
 								<span>Extra
-																																																																								                                Pages</span>
+																																																																																																																																																																											                                Pages</span>
 							</a>
 							<ul class="ml-menu">
 								<li>
@@ -516,7 +520,7 @@
 							<a href="javascript:void(0);" class="menu-toggle">
 								<i class="zmdi zmdi-swap-alt"></i>
 								<span>User
-																																																																								                                Interface (UI)</span>
+																																																																																																																																																																											                                Interface (UI)</span>
 							</a>
 							<ul class="ml-menu">
 								<li>
@@ -687,7 +691,7 @@
 										<div class="media-body">
 											<span class="name">Claire Sassu</span>
 											<span class="message">Can you share
-																																																																																																                                            the...</span>
+																																																																																																																																																																																																																																				                                            the...</span>
 											<span class="badge badge-outline status"></span>
 										</div>
 									</div>
@@ -700,7 +704,7 @@
 										<div class="media-body">
 											<span class="name">Maggie jackson</span>
 											<span class="message">Can you share
-																																																																																																                                            the...</span>
+																																																																																																																																																																																																																																				                                            the...</span>
 											<span class="badge badge-outline status"></span>
 										</div>
 									</div>
@@ -713,7 +717,7 @@
 										<div class="media-body">
 											<span class="name">Joel King</span>
 											<span class="message">Ready for the
-																																																																																																                                            meeti...</span>
+																																																																																																																																																																																																																																				                                            meeti...</span>
 											<span class="badge badge-outline status"></span>
 										</div>
 									</div>
@@ -827,28 +831,32 @@
 				</div>
 			</aside>
 			<!-- #END# Right Sidebar -->
+
 		</section>
 
 		<div class="color-bg"></div>
 		<!-- Jquery Core Js -->
-		<script src="doctor-back/bundles/libscripts.bundle.js"></script>
-		<!-- Lib Scripts Plugin Js -->
-		<script src="doctor-back/bundles/morphingsearchscripts.bundle.js"></script>
-		<!-- morphing search Js -->
-		<script src="doctor-back/bundles/vendorscripts.bundle.js"></script>
-		<!-- Lib Scripts Plugin Js -->
+		{% block body %}{% endblock %}
 
-		<script src="doctor-back/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
-		<!-- Sparkline Plugin Js -->
-		<script src="doctor-back/plugins/chartjs/Chart.bundle.min.js"></script>
-		<!-- Chart Plugins Js -->
+		{% block javascript %}
+			<script src="doctor-back/bundles/libscripts.bundle.js"></script>
+			<!-- Lib Scripts Plugin Js -->
+			<script src="doctor-back/bundles/morphingsearchscripts.bundle.js"></script>
+			<!-- morphing search Js -->
+			<script src="doctor-back/bundles/vendorscripts.bundle.js"></script>
+			<!-- Lib Scripts Plugin Js -->
 
-		<!-- Custom Js -->
-		<script src="doctor-back/bundles/morphingscripts.bundle.js"></script>
-		<!-- morphing search page js -->
-		<script src="doctor-back/js/pages/index.js"></script>
-		<script src="doctor-back/js/pages/charts/sparkline.min.js"></script>
+			<script src="doctor-back/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+			<!-- Sparkline Plugin Js -->
+			<script src="doctor-back/plugins/chartjs/Chart.bundle.min.js"></script>
+			<!-- Chart Plugins Js -->
 
+			<!-- Custom Js -->
+			<script src="doctor-back/bundles/morphingscripts.bundle.js"></script>
+			<!-- morphing search page js -->
+			<script src="doctor-back/js/pages/index.js"></script>
+			<script src="doctor-back/js/pages/charts/sparkline.min.js"></script>
+		{% endblock %}
 	</body>
 
 </html>

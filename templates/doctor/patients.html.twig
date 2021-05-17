@@ -1,22 +1,6 @@
-﻿{% include 'base.html.twig' %}
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-		<title>:: Swift - Hospital Admin ::</title>
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
-		<link href="doctor-back/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-		<link href="doctor-back/css/main.css" rel="stylesheet">
-		<!-- Custom Css -->
-
-		<!-- Swift Themes. You can choose a theme from css/themes instead of get all themes -->
-	<link href="doctor-back/css/themes/all-themes.css" rel="stylesheet"/> </head>
-
-
-	<section class="content patients">
+﻿{% extends 'base.html.twig' %}
+{% block body %}
+	<section class="content profile-page">
 		<div class="container-fluid">
 			<div class="block-header">
 				<h2>Liste Patients</h2>
@@ -66,18 +50,5 @@
 			</div>
 		</div>
 	</section>
-
-	<div class="color-bg"></div>
-	<!-- Jquery Core Js -->
 	<script src="doctor-back/bundles/libscripts.bundle.js"></script>
-	<!-- Lib Scripts Plugin Js -->
-	<script src="doctor-back/bundles/morphingsearchscripts.bundle.js"></script>
-	<!-- morphing search Js -->
-	<script src="doctor-back/bundles/vendorscripts.bundle.js"></script>
-	<!-- Lib Scripts Plugin Js -->
-
-	<script src="doctor-back/bundles/mainscripts.bundle.js"></script>
-	<!-- Custom Js -->
-	<script src="doctor-back/bundles/morphingscripts.bundle.js"></script>
-	<!-- morphing search page js -->
-</html></body></html>
+{% endblock %}
