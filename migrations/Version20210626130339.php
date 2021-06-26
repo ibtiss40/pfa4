@@ -20,9 +20,9 @@ final class Version20210626130339 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE rendez_vous DROP FOREIGN KEY FK_65E8AA0A1727D3D7');
-        $this->addSql('DROP INDEX IDX_65E8AA0A1727D3D7 ON rendez_vous');
-        $this->addSql('ALTER TABLE rendez_vous DROP id_secretaire_id');
+        // $this->addSql('ALTER TABLE rendez_vous DROP FOREIGN KEY FK_65E8AA0A1727D3D7');
+        // $this->addSql('DROP INDEX IDX_65E8AA0A1727D3D7 ON rendez_vous');
+        // $this->addSql('ALTER TABLE rendez_vous DROP id_secretaire_id');
         $this->addSql('ALTER TABLE user CHANGE cin cin VARCHAR(255) NOT NULL, CHANGE ville ville VARCHAR(255) NOT NULL, CHANGE genre genre VARCHAR(255) NOT NULL, CHANGE couv_sociale couv_sociale VARCHAR(255) NOT NULL, CHANGE profession profession VARCHAR(255) NOT NULL, CHANGE age age VARCHAR(255) NOT NULL, CHANGE image image VARCHAR(255) NOT NULL');
     }
 

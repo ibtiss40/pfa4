@@ -35,12 +35,24 @@ class ApiPostController extends AbstractController
     {
 
         $jsonrecu = $request->getContent();
+        if(empty($jsonrecu)){
+            $response = $this->json([
+                'statut'=> 400,
+                'message'=> 'ellement manquant !'
+            ] , 400 );
+            $response->headers->set('Access-Control-Allow-Origin','*');
+            return $response;
+        }
         $post = $serializer->deserialize($jsonrecu, User::class, 'json');
 
         $em->persist($post);
         $em->flush();
-
-        return $this->json($post, 201, [], ['groups' =>'post:read']);
+        $response = $this->json([
+            'statut'=> 200,
+            'message'=> 'L\'utilisateur a bien été enregistrer !'
+        ] , 200 );
+        $response->headers->set('Access-Control-Allow-Origin','*');
+        return $response;
        // dd($jsonrecu);
 
     }
@@ -51,13 +63,25 @@ class ApiPostController extends AbstractController
     {
 
         $jsonrecu = $request->getContent();
+        // dd($jsonrecu);
+        if(empty($jsonrecu)){
+            $response = $this->json([
+                'statut'=> 400,
+                'message'=> 'ellement manquant !'
+            ] , 400 );
+            $response->headers->set('Access-Control-Allow-Origin','*');
+            return $response;
+        }
         $rv = $serializer->deserialize($jsonrecu, RendezVous::class, 'json');
-
         $em->persist($rv);
         $em->flush();
-
-        return $this->json($rv, 201, [], ['groups' =>'rv:read']);
-       // dd($jsonrecu);
+        $response = $this->json([
+            'statut'=> 200,
+            'message'=> 'Votre rendez-vous a bien été enregistrer !'
+        ] , 200 );
+        $response->headers->set('Access-Control-Allow-Origin','*');
+        return $response;
+       
 
     }
 }
