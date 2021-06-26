@@ -1,5 +1,14 @@
 {%  extends  'base.html.twig' %}
 {% block body %}
+	<link href="../../doctor-back/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+	<link
+	href="../../doctor-back/plugins/morrisjs/morris.css" rel="stylesheet"/>
+	<!-- Custom Css -->
+	<link
+	href="../../doctor-back/css/main.css" rel="stylesheet">
+	<!-- Swift Themes. You can choose a theme from css/themes instead of get all themes -->
+	<link href="../../doctor-back/css/themes/all-themes.css" rel="stylesheet"/>
 
 	<section class="content profile-page">
 		<div class="container-fluid">
@@ -9,23 +18,24 @@
 			<div class="row clearfix">
 				<div class="col-lg-4 col-md-12 col-sm-12">
 					<div class=" card patient-profile">
-						<img src="doctor-back/images/image-1.jpg" class="img-fluid" alt="">
+						<img src="{{user.image}}" class="img-fluid" alt="">
 					</div>
 					<div class="card">
 						<div class="header">
-							<h2>About Patient</h2>
+							<h2>{{user.nom}}{{user.prenom}}
+							</h2>
 						</div>
 						<div class="body">
 							<strong>Identification</strong>
 							<p>010101</p>
 							<strong></strong>
-							<p>Will Smith</p>
+							<p>{{user.nom}}</p>
 							<strong>Email</strong>
-							<p>will.smith@info.com</p>
+							<p>{{user.email}}</p>
 							<strong>Phone</strong>
-							<p>+123 456 789</p>
+							<p>{{user.telephone}}</p>
 							<strong>Couverture sociale</strong>
-							<p>CNOPS</p>
+							<p>{{user.couvSociale}}</p>
 							<hr>
 							<strong>Address</strong>
 							<address>85 Bay Drive, New Port Richey, FL 34653</address>
@@ -53,14 +63,12 @@
 									<div class="wrap-reset">
 										<div class="mypost-list">
 											<div class="post-box">
-												<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
-												</p>
-												<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+										<p>	Si rien ne semble s’opposer, d’un point de vue légal, à ce qu’un médecin qui n’a pas pris en charge effectivement un patient rédige le courrier de compte rendu d’hospitalisation, la Haute Autorité de Santé (HAS) recommande que certaines précautions soient prises dans l'exercice de cette pratique.
 												</p>
 											</div>
 											<hr>
 											<div class="post-box">
-												<h4>General Report</h4>
+												<h4>Rapport general</h4>
 												<div class="body p-l-0 p-r-0">
 													<ul class="list-unstyled">
 														<li>
@@ -99,78 +107,94 @@
 												</div>
 											</div>
 											<hr>
-											<h4>Education</h4>
-											<ul class="dis">
-												<li>B.Com from Ski University</li>
-												<li>In hac habitasse platea dictumst.</li>
-												<li>In hac habitasse platea dictumst.</li>
-												<li>Vivamus elementum semper nisi.</li>
-												<li>Praesent ac sem eget est egestas volutpat.</li>
-											</ul>
-											<hr>
-											<h4>Past Visit History</h4>
-											<ul class="dis">
-												<li>Integer tincidunt.</li>
-												<li>Praesent vestibulum dapibus nibh.</li>
-												<li>Integer tincidunt.</li>
-												<li>Praesent vestibulum dapibus nibh.</li>
-												<li>Integer tincidunt.</li>
-												<li>Praesent vestibulum dapibus nibh.</li>
-											</ul>
-										</div>
+											<div class="row clearfix">
+												<div class="col-lg-12 col-md-12 col-sm-12"></div>
+												<div class="fallback">
+													<form method="Post" action="{{path('addFichie',{'id':user.id})}}" enctype="multipart/form-data">
+														<div class="fallback">
+															<input type="file" name="image" id="your_picture" onchange="readURL(this);"class="btn btn-raised btn-default btn-sm" multiple/>
+															<label for="your_picture">
+																<figure>
+																	<img src="" alt="" class="your_picture_image">
+																</figure>
+																<span class="file-button">choose picture</span>
+															</label>
+														</div>
+														<button type="submit" class="btn btn-raised g-bg-cyan">Ajouter
+														</button>
+													</form>
+							</div>
+											</div>
+				{% for fich in fichs %}						
+<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="card all-patients">
+							<div class="body">
+								<div class="row">
+									<div class="col-md-4 col-sm-4 text-center m-b-0">
+						<div class="quick-stats">
+										<a href="{{fich.url}}" data={{fich.url}} type="application/pdf" class="btn btn-raised btn-sm">vieww</a>
+									</div>
+					</div>
+									</div>
+							</div>
+						</div>
+					</div>    {% endfor %}
+
+												
+											
 									</div>
 								</div>
-								<div role="tabpanel" class="tab-pane" id="timeline">
-									<div class="timeline-body">
-										<div class="timeline m-border">
-											<div class="timeline-item">
-												<div class="item-content">
-													<div class="text-small">Just now</div>
-													<p>Discharge.</p>
-												</div>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="timeline">
+								<div class="timeline-body">
+									<div class="timeline m-border">
+										<div class="timeline-item">
+											<div class="item-content">
+												<div class="text-small">Just now</div>
+												<p>Discharge.</p>
 											</div>
-											<div class="timeline-item border-info">
-												<div class="item-content">
-													<div class="text-small">11:30</div>
-													<p>Routine Checkup</p>
-												</div>
+										</div>
+										<div class="timeline-item border-info">
+											<div class="item-content">
+												<div class="text-small">11:30</div>
+												<p>Routine Checkup</p>
 											</div>
-											<div class="timeline-item border-warning border-l">
-												<div class="item-content">
-													<div class="text-small">10:30</div>
-													<p>Operation
-													</p>
-												</div>
+										</div>
+										<div class="timeline-item border-warning border-l">
+											<div class="item-content">
+												<div class="text-small">10:30</div>
+												<p>Operation
+												</p>
 											</div>
-											<div class="timeline-item border-warning">
-												<div class="item-content">
-													<div class="text-small">3 days ago</div>
-													<p>Routine Checkup</p>
-												</div>
+										</div>
+										<div class="timeline-item border-warning">
+											<div class="item-content">
+												<div class="text-small">3 days ago</div>
+												<p>Routine Checkup</p>
 											</div>
-											<div class="timeline-item border-danger">
-												<div class="item-content">
-													<div class="text--muted">Thu, 10 Mar</div>
-													<p>Routine Checkup</p>
-												</div>
+										</div>
+										<div class="timeline-item border-danger">
+											<div class="item-content">
+												<div class="text--muted">Thu, 10 Mar</div>
+												<p>Routine Checkup</p>
 											</div>
-											<div class="timeline-item border-info">
-												<div class="item-content">
-													<div class="text-small">Sat, 5 Mar</div>
-													<p>Routine Checkup</p>
-												</div>
+										</div>
+										<div class="timeline-item border-info">
+											<div class="item-content">
+												<div class="text-small">Sat, 5 Mar</div>
+												<p>Routine Checkup</p>
 											</div>
-											<div class="timeline-item border-danger">
-												<div class="item-content">
-													<div class="text-small">Sun, 11 Feb</div>
-													<p>Blood checkup test</p>
-												</div>
+										</div>
+										<div class="timeline-item border-danger">
+											<div class="item-content">
+												<div class="text-small">Sun, 11 Feb</div>
+												<p>Blood checkup test</p>
 											</div>
-											<div class="timeline-item border-info">
-												<div class="item-content">
-													<div class="text-small">Thu, 17 Jan</div>
-													<p>Admit patient ward no. 21</p>
-												</div>
+										</div>
+										<div class="timeline-item border-info">
+											<div class="item-content">
+												<div class="text-small">Thu, 17 Jan</div>
+												<p>Admit patient ward no. 21</p>
 											</div>
 										</div>
 									</div>
@@ -181,6 +205,6 @@
 				</div>
 			</div>
 		</div>
-	</section>
-
-{% endblock %}
+	</div>
+</section>
+<script src="doctor-back/js/admin.js"></script>{% endblock %}

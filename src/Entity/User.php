@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -14,70 +17,104 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("post:read")
      */
-    private $nom;
+    public $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("post:read")
      */
-    private $prenom;
+    public $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("post:read")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $cin;
+    public $cin;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("post:read")
      */
-    private $telephone;
+    public $telephone;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("post:read")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $ville;
+    public $ville;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("post:read")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $genre;
+    public $genre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("post:read")
      */
-    private $email;
+    public $email;
 
     
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("post:read")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $couvSociale;
+    public $couvSociale;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("post:read")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $profession;
+    public $profession;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("post:read")
      */
-    private $password;
+    public $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("post:read")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $age;
+    public $age;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("post:read")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $image;
+    public $image;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Fichier::class, mappedBy="user")
+     *  @Groups("post:read")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    public $fichiers;
+
+    public function __construct()
+    {
+        $this->fichiers = new ArrayCollection();
+        $this->fich = new ArrayCollection();
+        $this->fichiersf = new ArrayCollection();
+    }
 
   
 
@@ -233,5 +270,35 @@ class User
         return $this;
     }
 
-  
+    /**
+     * @return Collection|Fichier[]
+     */
+    public function getFichiers(): Collection
+    {
+        return $this->fichiers;
+    }
+
+    public function addFichier(Fichier $fichier): self
+    {
+        if (!$this->fichiers->contains($fichier)) {
+            $this->fichiers[] = $fichier;
+            $fichier->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFichier(Fichier $fichier): self
+    {
+        if ($this->fichiers->removeElement($fichier)) {
+            // set the owning side to null (unless already changed)
+            if ($fichier->getUser() === $this) {
+                $fichier->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+   
 }

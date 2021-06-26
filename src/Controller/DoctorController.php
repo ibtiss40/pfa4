@@ -6,9 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\SecretaireRepository;
+use App\Entity\Fichier;
+use App\Entity\User;
+use App\Entity\RendezVous;
 use App\Entity\Secretaire;
 use App\Repository\UserRepository;
-use App\Entity\User;
+use App\Repository\RendezVousRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -56,13 +59,16 @@ class DoctorController extends AbstractController
     }
     /**
      * @Route("/schedule", name="schedule")
+     *  @Route("/", name="schedule")
      */
-    public function schedule(): Response
+    public function allRv(RendezVousRepository $repo): Response
     {
         return $this->render('doctor/doctor-schedule.html.twig', [
+            'Rv' => $repo->findAll(),
             'controller_name' => 'DoctorController',
         ]);
     }
+  
      /**
      * @Route("/payments", name="payments")
      */
@@ -102,27 +108,7 @@ class DoctorController extends AbstractController
         ]);
     }
     
-      /**
-     * @Route("/profile/show/{id}", name="profile")
-     */
-    public function profile($id = null): Response
-    {
-        $user = $this->getDoctrine()
-        ->getRepository(User::class)
-        ->find($id);
-        return $this->render('doctor/patient-profile.html.twig', [
-            'user' => $user,
-        ]);
-    }
-    /**
-     * @Route("/profile", name="profi")
-     */
-    public function profil(): Response
-    {
-        return $this->render('doctor/patient-profile.html.twig', [
-            'controller_name' => 'DoctorController',
-        ]);
-    }
+    
     /**
      * @Route("/profileS", name="profiles")
      */
@@ -224,4 +210,5 @@ class DoctorController extends AbstractController
         return $this->redirectToRoute('allpatient');
 
     }
+    
 }

@@ -15,14 +15,12 @@
 								<div class="row">
 									<div class="col-md-4 col-sm-4 text-center m-b-0">
 										<a href="#" class="p-profile-pix">
-											<img src=" {{user.image}}" alt="user" class="img-thumbnail img-fluid"></a>
+											<img src=" {{user.image}}" alt="user" class="img-thumbnail img-fluid">
+											</a>
 									</div>
 									<div class="col-md-8 col-sm-8 m-b-0">
 										<h5 class="m-b-0">{{user.nom}}
 											{{user.prenom}}
-											<a href="#" class="edit">
-												<i class="zmdi zmdi-edit"></i>
-											</a><br>
 											<a href="{{path('deleteP', {'id':user.id})}}" class="edit">
 												<i class="zmdi zmdi-delete"></i>
 											</a>
@@ -37,9 +35,6 @@
 									<div class="quick-stats">
 										<a href="{{path('profile',{'id':user.id})}}" class="btn btn-raised btn-sm">View Profile</a>
 									</div>
-									<div class="quick-stats">
-										<a href="{{user.image}}" data={{user.image}} type="application/pdf" class="btn btn-raised btn-sm">View pdf</a>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -50,5 +45,4 @@
 			</div>
 		</div>
 	</section>
-	<script src="doctor-back/bundles/libscripts.bundle.js"></script>
 {% endblock %}

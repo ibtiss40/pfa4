@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\RendezVousRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,18 +20,33 @@ class RendezVous
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups("rv:read")
      */
     private $Date;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *  @Groups("rv:read")
      */
     private $Telephone;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Secretaire::class, inversedBy="rendezVouses")
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *  @Groups("rv:read")
      */
-    private $idSecretaire;
+    private $Fname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *  @Groups("rv:read")
+     */
+    private $Lname;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *  @Groups("rv:read")
+     */
+    private $Email;
 
     public function getId(): ?int
     {
@@ -61,15 +77,41 @@ class RendezVous
         return $this;
     }
 
-    public function getIdSecretaire(): ?Secretaire
+    public function getFname(): ?string
     {
-        return $this->idSecretaire;
+        return $this->Fname;
     }
 
-    public function setIdSecretaire(?Secretaire $idSecretaire): self
+    public function setFname(?string $Fname): self
     {
-        $this->idSecretaire = $idSecretaire;
+        $this->Fname = $Fname;
 
         return $this;
     }
+
+    public function getLname(): ?string
+    {
+        return $this->Lname;
+    }
+
+    public function setLname(string $Lname): self
+    {
+        $this->Lname = $Lname;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->Email;
+    }
+
+    public function setEmail(?string $Email): self
+    {
+        $this->Email = $Email;
+
+        return $this;
+    }
+
+   
 }
