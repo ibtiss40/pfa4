@@ -34,8 +34,8 @@ class ApiPostController extends AbstractController
     public function recu(Request $request,SerializerInterface $serializer, EntityManagerInterface $em ): Response
     {
 
-        $jsonrecu = $request->getContent();
-        if(empty($jsonrecu)){
+        $parameters = $request->request;
+        if(empty($parameters)){
             $response = $this->json([
                 'statut'=> 400,
                 'message'=> 'ellement manquant !'
@@ -43,9 +43,24 @@ class ApiPostController extends AbstractController
             $response->headers->set('Access-Control-Allow-Origin','*');
             return $response;
         }
-        $post = $serializer->deserialize($jsonrecu, User::class, 'json');
 
-        $em->persist($post);
+        // $post = $serializer->deserialize($jsonrecu, User::class, 'json');
+        $userRecu = new User();
+        $userRecu->setNom($parameters->get("Nom"));
+        $userRecu->setPrenom($parameters->get("Prenom"));
+        $userRecu->setProfession($parameters->get("Profession"));
+        $userRecu->setTelephone($parameters->get("Telephone"));
+        $userRecu->setAge($parameters->get("Age"));
+        $userRecu->setEmail($parameters->get("Email"));
+        $userRecu->setGenre($parameters->get("Genre"));
+        $userRecu->setCin($parameters->get("Cin"));
+        $userRecu->setImage($parameters->get("Image"));
+        $userRecu->setVille($parameters->get("Ville"));
+        $hash1 = password_hash($parameters->get("pasword"),PASSWORD_BCRYPT,array('cost' => 11));
+        $userRecu->setPassword($hash1);
+        $userRecu->setCouvSociale($parameters->get("CouvSociale"));
+        // $userRecu->setfi($parameters->get("Nom"));
+        $em->persist($userRecu);
         $em->flush();
         $response = $this->json([
             'statut'=> 200,
@@ -62,9 +77,8 @@ class ApiPostController extends AbstractController
     public function RV(Request $request,SerializerInterface $serializer, EntityManagerInterface $em ): Response
     {
 
-        $jsonrecu = $request->getContent();
-        // dd($jsonrecu);
-        if(empty($jsonrecu)){
+        $parameters = $request->request;
+        if(empty($parameters)){
             $response = $this->json([
                 'statut'=> 400,
                 'message'=> 'ellement manquant !'
@@ -72,8 +86,16 @@ class ApiPostController extends AbstractController
             $response->headers->set('Access-Control-Allow-Origin','*');
             return $response;
         }
-        $rv = $serializer->deserialize($jsonrecu, RendezVous::class, 'json');
-        $em->persist($rv);
+
+        $rendez = new RendezVous();
+        $rendez->setDate($parameters->get("Date"));
+        $rendez->setLname($parameters->get("Lname"));
+        $rendez->setFname($parameters->get("Fname"));
+        $rendez->setTelephone($parameters->get("Telephone"));
+        $rendez->setEmail($parameters->get("Email"));
+        
+        // $rv = $serializer->deserialize($jsonrecu, RendezVous::class, 'json');
+        $em->persist($rendez);
         $em->flush();
         $response = $this->json([
             'statut'=> 200,
